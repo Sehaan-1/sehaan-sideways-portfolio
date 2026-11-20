@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en" class="dark-mode">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="color-scheme" content="dark light" />
+  <script>
+    try {
+      const savedTheme = localStorage.getItem("color-scheme");
+      const theme = (savedTheme === 'light') ? 'light' : 'dark';
+      document.querySelector('meta[name="color-scheme"]').content = theme;
+      if (theme === 'dark') {
+        document.documentElement.classList.add('dark-mode');
+      } else {
+        document.documentElement.classList.remove('dark-mode');
+      }
+    } catch (e) {}
+  </script>
+  <title>Sehaan Ur Rahman — Portfolio</title>
+  <!-- Google Fonts: Bebas Neue & Montserrat -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body class="dark-mode">
+
+  <!-- ===================================================================== -->
+  <!-- 1. NAVBAR (.navbar) — Left: "Sehaan Ur Rahman", Right: 2-Bar Menu     -->
+  <!-- ===================================================================== -->
+  <header role="banner" class="navbar">
+    <div class="navbar-holder">
+      <div class="flex items-center gap-2.5">
+        <button id="navLogoBtn" type="button" class="logo-holder">
+          <span id="brandLogoText">Sehaan Ur Rahman</span>
+        </button>
+
+        <!-- Visually Pleasing Dark / Light Mode Toggle Pill -->
+        <button id="personaToggleBtn" type="button" title="Toggle Dark Mode / Light Mode" class="theme-toggle-pill font-montserrat text-[11px] font-medium px-3 py-1.5 rounded-full flex items-center gap-2 cursor-pointer">
+          <span class="w-2 h-2 rounded-full bg-[#f4f3ef] transition-transform" id="personaDot"></span>
+          <span id="personaLabel">Light Mode</span>
+        </button>
+        <span id="brandSubBadge" class="sr-only">Sehaan</span>
+      </div>
+
+      <button id="mobileMenuBtn" type="button" aria-label="Menu" class="menu-button">
+        <span class="menu-bar menu-bar-1"></span>
+        <span class="menu-bar menu-bar-2"></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Fullscreen Curtain Menu Overlay -->
+  <div id="mobileMenuPanel" class="fullscreen-menu-overlay" aria-hidden="true">
+    <nav role="navigation" class="nav-menu-wrapper flex flex-col items-center justify-center gap-2 text-center">
+      <button type="button" data-nav="work" class="nav-link overlay-nav-link">Work</button>
+      <button type="button" data-nav="about" class="nav-link overlay-nav-link">About</button>
+      <button type="button" data-nav="experience" class="nav-link overlay-nav-link">Experience</button>
+      <a href="https://github.com/Sehaan-1" target="_blank" rel="noopener noreferrer" class="overlay-nav-link">GitHub</a>
+      <a href="https://linkedin.com/in/sehaan" target="_blank" rel="noopener noreferrer" class="overlay-nav-link">LinkedIn</a>
+      <a href="assets/Sehaan_Ur_Rahman_CV.pdf" target="_blank" rel="noopener noreferrer" class="overlay-nav-link text-[#ff7b00]">Download CV ↗</a>
+      <button type="button" data-nav="contact" class="nav-link overlay-nav-link">Contact</button>
+    </nav>
+
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- MAIN VIEW: SIDEWAYS HOME PAGE                                         -->
+  <!-- ===================================================================== -->
+  <main id="view-home" class="block">
+
+    <!-- 2. #Hero SECTION -->
+    <section id="Hero" class="section overflow-hidden">
+      <div class="hero-section">
+        <!-- Single Horizontal Row: # T H E [spacer] D E V E L O P E R -->
+        <div id="heroLettersRow1" class="hero-text-holder">
+          <div class="perspective"><div class="hero-text">#</div></div>
+          <div class="perspective"><div class="hero-text">T</div></div>
+          <div class="perspective"><div class="hero-text">H</div></div>
+          <div class="perspective"><div class="hero-text">E</div></div>
+          <div class="perspective"><div class="hero-text empty">E</div></div>
+          <div class="perspective"><div class="hero-text">d</div></div>
+          <div class="perspective"><div class="hero-text">e</div></div>
+          <div class="perspective"><div class="hero-text">v</div></div>
+          <div class="perspective"><div class="hero-text">e</div></div>
+          <div class="perspective"><div class="hero-text">l</div></div>
+          <div class="perspective"><div class="hero-text">o</div></div>
+          <div class="perspective"><div class="hero-text">p</div></div>
+          <div class="perspective"><div class="hero-text">e</div></div>
+          <div class="perspective"><div class="hero-text">r</div></div>
+        </div>
+        <div id="heroLettersRow2" class="hidden"></div>
+
+        <!-- Center Visual Stage: Wide Hero Image (z-index: 2) + Subtle Background Marquee Strictly Behind Image (z-index: 1) -->
+        <div class="hero-visual-stage">
+          <div class="hero-image-holder" id="heroImageHolder">
+            <img
+              id="heroMainImage"
+              class="hero-image"
+              src="assets/images/hero.jpg"
+              alt="Sehaan Ur Rahman — The Developer Hero"
+              fetchpriority="high"
+              decoding="async"
+              width="1200"
+              height="700"
+            />
+          </div>
+
+          <div id="marqueeSection" class="hero-marquees-stack" aria-hidden="true">
+            <div class="infinite-text-holder">
+              <div class="infinite-track-left" id="heroMarqueeTrack">
+                <span class="infinite-word marquee-item-text">Noir Créatif</span>
+                <span class="infinite-word marquee-item-text">Sehaan Ur Rahman</span>
+                <span class="infinite-word marquee-item-text">Noir Créatif</span>
+                <span class="infinite-word marquee-item-text">Sehaan Ur Rahman</span>
+                <span class="infinite-word marquee-item-text">Noir Créatif</span>
+                <span class="infinite-word marquee-item-text">Sehaan Ur Rahman</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bottom-Right Intro Paragraph (Completely below the visual stage, 100% unobstructed!) -->
+        <div class="hero-paragraph-holder">
+          <div class="hero-paragraph-wrapper">
+            <p id="heroSpecializeText" class="hero-paragraph">
+              I design and build thoughtful digital products, high-performance systems, and intuitive interfaces that bridge aesthetics and functionality.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. #About SECTION (.section.grey-section) -->
+    <!--    Diagonal Staggered Framing: Top-Left Portrait 01 -> Center 5 Scroll-Fill Lines -> Bottom-Right Portrait 02 -->
+    <section id="About" class="section grey-section about-scroll-track">
+      <div class="black-lines top"></div>
+
+      <div id="aboutSection" class="about-sticky-viewport">
+        <div class="about-stage-inner">
+          <!-- Top-Left Portrait 01 -->
+          <div class="about-me-image-holder _01" id="aboutImg01">
+            <img
+              src="assets/images/about-01.jpg"
+              alt="Sehaan Studio Portrait 01"
+              loading="lazy"
+              decoding="async"
+              width="400"
+              height="520"
+            />
+          </div>
+
+          <!-- Center 5 Scroll-Fill Lines -->
+          <div class="about-text-holder" id="aboutRevealContainer">
+            <div class="black-line-text-holder">
+              <div class="black-line-text-container">
+                <span class="grey-span" id="aboutGhost0">Collaboration is at the heart of</span>
+                <span class="black-span" id="aboutFill0">Collaboration is at the heart of</span>
+              </div>
+              <div class="black-line-text-container">
+                <span class="grey-span" id="aboutGhost1">my work. I build thoughtful</span>
+                <span class="black-span" id="aboutFill1">my work. I build thoughtful</span>
+              </div>
+              <div class="black-line-text-container">
+                <span class="grey-span" id="aboutGhost2">products and reliable systems</span>
+                <span class="black-span" id="aboutFill2">products and reliable systems</span>
+              </div>
+              <div class="black-line-text-container">
+                <span class="grey-span" id="aboutGhost3">where design, code, and ideas</span>
+                <span class="black-span" id="aboutFill3">where design, code, and ideas</span>
+              </div>
+              <div class="black-line-text-container">
+                <span class="grey-span" id="aboutGhost4">converge.</span>
+                <span class="black-span" id="aboutFill4">converge.</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom-Right Portrait 02 -->
+          <div class="about-me-image-holder _02" id="aboutImg02">
+            <img
+              src="assets/images/about-02.jpg"
+              alt="Sehaan Studio Portrait 02"
+              loading="lazy"
+              decoding="async"
+              width="400"
+              height="520"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="black-lines"></div>
+    </section>
+
+    <!-- 3.5. EXPERIENCE SECTION (.section.themed-section) -->
+    <section id="experienceSection" class="section themed-section py-16 border-t border-[var(--border-line)]">
+      <div class="container max-w-5xl mx-auto px-4">
+        <div class="small-title-holder mb-8">
+          <div class="small-title font-bebas text-4xl tracking-widest text-[#ff7b00]">EXPERIENCE & LEADERSHIP</div>
+        </div>
+
+        <div class="space-y-6">
+          <!-- Item 1: MPOnline Limited -->
+          <div class="p-6 border border-[var(--border-line)] bg-[var(--surface-card)] transition-transform hover:-translate-y-0.5">
+            <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 mb-2">
+              <h3 class="font-bebas text-2xl tracking-wide">Advanced Software Engineering Intern · MPOnline Limited</h3>
+              <span class="font-montserrat text-xs text-[#ff7b00] font-semibold">May 2026 – Jul 2026 · Bhopal</span>
+            </div>
+            <p class="font-montserrat text-xs opacity-60 uppercase tracking-wider mb-3">C# · ASP.NET MVC · SQL Server · Payroll Systems</p>
+            <ul class="font-montserrat text-xs opacity-85 space-y-1.5 list-disc list-inside leading-relaxed">
+              <li>Built C# payroll engines for 4 employee categories and 4 compensation models, centralising shared salary rules.</li>
+              <li>Validated engine outputs against manual calculations, confirming payroll accuracy across all categories.</li>
+              <li>Integrated the engines into an ASP.NET MVC pay-slip portal on a normalised SQL Server schema.</li>
+            </ul>
+          </div>
+
+          <!-- Item 2: Digital Guru -->
+          <div class="p-6 border border-[var(--border-line)] bg-[var(--surface-card)] transition-transform hover:-translate-y-0.5">
+            <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 mb-2">
+              <h3 class="font-bebas text-2xl tracking-wide">Software Developer Intern · Digital Guru</h3>
+              <span class="font-montserrat text-xs text-[#ff7b00] font-semibold">Aug 2025 – Feb 2026 · Remote</span>
+            </div>
+            <p class="font-montserrat text-xs opacity-60 uppercase tracking-wider mb-3">Multi-Tenant Reporting · Google & Meta APIs · JWT · Automation</p>
+            <ul class="font-montserrat text-xs opacity-85 space-y-1.5 list-disc list-inside leading-relaxed">
+              <li>Contributed to a multi-tenant ad dashboard unifying Google and Meta reporting across 5 campaigns and 26 attributed leads.</li>
+              <li>Automated 15-minute metric refreshes with idempotent per-campaign/day snapshots, CPL-threshold rules, and 90% budget-utilisation alerts.</li>
+              <li>Implemented JWT authentication, tenant-scoped workflows, and maintained 46 API contract checks.</li>
+            </ul>
+          </div>
+
+          <!-- Item 3: GDSC Bhopal -->
+          <div class="p-6 border border-[var(--border-line)] bg-[var(--surface-card)] transition-transform hover:-translate-y-0.5">
+            <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 mb-2">
+              <h3 class="font-bebas text-2xl tracking-wide">Technical Member · Google Developer Student Clubs</h3>
+              <span class="font-montserrat text-xs text-[#ff7b00] font-semibold">Aug 2024 – May 2025 · Bhopal</span>
+            </div>
+            <p class="font-montserrat text-xs opacity-60 uppercase tracking-wider mb-3">Mentorship · Python · Algorithms · Cloud & ML Workshops</p>
+            <ul class="font-montserrat text-xs opacity-85 space-y-1.5 list-disc list-inside leading-relaxed">
+              <li>Mentored 50+ students in Python and algorithms, contributing to a 15% rise in average assessment scores.</li>
+              <li>Delivered 15+ workshops on cloud and machine-learning tooling, earning a 95% satisfaction rating.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. WORK (#Projects) SECTION -->
+    <section id="workSection" class="section themed-section">
+      <div id="Projects" class="container">
+        <div class="tilted">
+          <div class="small-title-holder">
+            <div class="small-title" id="workSectionHeaderLabel">WORK</div>
+          </div>
+
+          <div id="workListWrapper" class="work-list-wrapper">
+            <div class="work-list-wrapper-cms">
+              <div id="workRowsContainer" role="list" class="work-list">
+                <!-- Populated via JS with all 9 projects -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===================================================================== -->
+  <!-- 5. FOOTER SECTION — Exact 2-Column .footer-grid + .footer Bottom Bar  -->
+  <!-- ===================================================================== -->
+  <footer id="contactSection" class="section themed-section pt-10 pb-12">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-left-col">
+          <!-- Headline: LET'S MAKE SOMETHING / AWESOME TOGETHER -->
+          <div class="footer-title-holder">
+            <div class="footer-tilted-line">
+              <span class="grey-span">Let's make something</span>
+              <span class="black-span" id="footerFill0">Let's make something</span>
+            </div>
+            <div class="footer-tilted-line">
+              <span class="grey-span">awesome together</span>
+              <span class="black-span" id="footerFill1">awesome together</span>
+            </div>
+          </div>
+
+          <!-- Paragraph -->
+          <div class="footer-paragraph-holder">
+            <div class="footer-paragraph-wrapper">
+              <p id="footerBioParagraph" class="footer-paragraph">
+                Building reliable software, interactive web experiences, and end-to-end systems across Python, TypeScript, Rust, C++, Kotlin, and React.
+              </p>
+            </div>
+          </div>
+
+          <!-- Stacked Contact Links & Actions -->
+          <div class="footer-contact-stack">
+            <a id="emailDirectLink" href="mailto:sehaanincollege@gmail.com" class="footer-giant-link">
+              SEHAANINCOLLEGE@GMAIL.COM
+            </a>
+            <a id="githubDirectLink" href="https://github.com/Sehaan-1" target="_blank" rel="noopener noreferrer" class="footer-giant-link">
+              GITHUB.COM/SEHAAN-1
+            </a>
+            <a id="linkedinDirectLink" href="https://linkedin.com/in/sehaan" target="_blank" rel="noopener noreferrer" class="footer-giant-link">
+              LINKEDIN.COM/IN/SEHAAN
+            </a>
+            <a id="cvDownloadLink" href="assets/Sehaan_Ur_Rahman_CV.pdf" target="_blank" rel="noopener noreferrer" class="footer-giant-link text-[#ff7b00]">
+              DOWNLOAD CV (PDF) ↗
+            </a>
+            <button id="footerInquiryBtn" type="button" class="footer-giant-link text-left bg-transparent border-0 p-0 cursor-pointer text-[#ff7b00] hover:underline">
+              SEND DIRECT INQUIRY →
+            </button>
+          </div>
+        </div>
+
+        <!-- Top-Right Orange Starburst Icon -->
+        <div class="footer-up-button-holder">
+          <button id="scrollTopStarBtn" type="button" title="Back to Top" class="starburst-btn">
+            <img
+              id="footerStarSvg"
+              src="assets/images/starburst-icon.svg"
+              alt="Starburst Icon"
+              class="w-full h-full object-contain"
+            />
+          </button>
+        </div>
+      </div>
+
+
+    </div>
+  </footer>
+
+  <!-- ===================================================================== -->
+  <!-- PROJECT CASE STUDY MODAL (Native Dialog with Top-Layer & Light-Dismiss)-->
+  <!-- ===================================================================== -->
+  <dialog id="caseStudyModal" class="themed-modal w-full max-w-3xl overflow-hidden shadow-2xl m-auto p-0 border border-[var(--border-line)]" aria-labelledby="modalProjectTitle" closedby="any">
+    <div class="relative w-full max-w-3xl flex flex-col max-h-[90vh]">
+      <div class="flex items-center justify-between px-6 py-4 border-b border-[var(--border-line)]">
+        <div class="flex items-center gap-3">
+          <span id="modalProjectYear" class="font-bebas text-2xl text-[#ff7b00]">2026</span>
+          <span id="modalProjectCategory" class="font-montserrat text-xs uppercase tracking-widest opacity-70 font-semibold">PROJECT SHOWCASE</span>
+        </div>
+        <button id="closeCaseStudyModalBtn" type="button" class="font-montserrat text-xs font-semibold uppercase tracking-wider px-3.5 py-1.5 border border-[var(--border-line)] hover:border-[#ff7b00] transition-colors cursor-pointer" aria-label="Close case study dialog">
+          ESC / Close ✕
+        </button>
+      </div>
+      <div class="p-6 overflow-y-auto space-y-6">
+        <div class="aspect-[16/10] w-full overflow-hidden bg-[var(--color--grey-section)]">
+          <img id="modalProjectImage" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Project Full Artwork" class="w-full h-full object-cover" fetchpriority="low" decoding="async" />
+        </div>
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+          <div>
+            <h3 id="modalProjectTitle" class="font-bebas text-5xl sm:text-6xl leading-none">Tender Royal Pulse</h3>
+            <p id="modalProjectSubtitle" class="font-montserrat text-xs opacity-60 mt-1">Sehaan Ur Rahman — Selected Work</p>
+          </div>
+          <div class="flex flex-wrap items-center gap-2 font-montserrat text-xs font-semibold">
+            <a id="modalGithubRepoLink" href="https://github.com/Sehaan-1/Tender-Royal-Pulse" target="_blank" rel="noopener noreferrer" class="px-4 py-2 bg-[#ff7b00] text-white hover:opacity-90 transition-opacity">
+              View on GitHub ↗
+            </a>
+            <a id="modalLiveDemoLink" href="#" target="_blank" rel="noopener noreferrer" class="hidden px-4 py-2 border border-[#ff7b00] text-[#ff7b00] hover:bg-[#ff7b00] hover:text-white transition-colors">
+              Live Demo ↗
+            </a>
+            <button id="prevProjectModalBtn" type="button" class="px-3.5 py-2 border border-[var(--border-line)] hover:border-[#ff7b00] transition-colors cursor-pointer">← Prev</button>
+            <button id="nextProjectModalBtn" type="button" class="px-3.5 py-2 border border-[var(--border-line)] hover:border-[#ff7b00] transition-colors cursor-pointer">Next →</button>
+          </div>
+        </div>
+        <p id="modalProjectOverview" class="font-montserrat text-sm opacity-85 leading-relaxed"></p>
+        <div class="grid grid-cols-3 gap-4 pt-4 border-t border-[var(--border-line)] font-montserrat text-xs">
+          <div>
+            <span class="block opacity-50 uppercase">Author / Org</span>
+            <span id="modalProjectClient" class="font-semibold">Sehaan Ur Rahman</span>
+          </div>
+          <div>
+            <span class="block opacity-50 uppercase">Tech Stack</span>
+            <span id="modalProjectDeliverables" class="font-semibold">Python · Playwright · FastAPI</span>
+          </div>
+          <div>
+            <span class="block opacity-50 uppercase">Year</span>
+            <span id="modalProjectYearBottom" class="font-semibold">2026</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- ===================================================================== -->
+  <!-- CONTACT INQUIRY MODAL (Native Dialog with Top-Layer & Accessible Form) -->
+  <!-- ===================================================================== -->
+  <dialog id="contactModal" class="themed-modal w-full max-w-lg shadow-2xl m-auto p-6 sm:p-8 space-y-5 border border-[var(--border-line)]" aria-labelledby="contactModalTitle" closedby="any">
+    <div class="flex items-center justify-between border-b border-[var(--border-line)] pb-4">
+      <h3 id="contactModalTitle" class="font-bebas text-4xl leading-none">Let's make something awesome</h3>
+      <button id="closeContactModalBtn" type="button" class="font-montserrat text-xs font-semibold px-3 py-1 border border-[var(--border-line)] hover:border-[#ff7b00] transition-colors cursor-pointer" aria-label="Close contact dialog">✕</button>
+    </div>
+    <form id="contactForm" class="space-y-4 font-montserrat text-sm">
+      <div class="field">
+        <label for="senderNameInput" class="block text-xs uppercase tracking-wider opacity-70 font-semibold mb-1">Your Name</label>
+        <input id="senderNameInput" type="text" name="name" required autocomplete="name" placeholder="Alex Rivera" class="w-full px-3.5 py-2.5 bg-transparent border border-[var(--border-line)] focus:outline-none focus:border-[#ff7b00] transition-colors" />
+      </div>
+      <div class="field">
+        <label for="senderEmailInput" class="block text-xs uppercase tracking-wider opacity-70 font-semibold mb-1">Your Email</label>
+        <span id="emailHint" class="text-[11px] opacity-60 block mb-1">Format: alex@studio.com</span>
+        <input id="senderEmailInput" type="email" name="email" required autocomplete="email" aria-describedby="emailHint" placeholder="alex@studio.com" class="w-full px-3.5 py-2.5 bg-transparent border border-[var(--border-line)] focus:outline-none focus:border-[#ff7b00] transition-colors" />
+      </div>
+      <div class="field">
+        <label for="senderProjectInput" class="block text-xs uppercase tracking-wider opacity-70 font-semibold mb-1">Message</label>
+        <textarea id="senderProjectInput" name="message" rows="3" required placeholder="Tell Sehaan about your project or idea..." class="w-full px-3.5 py-2.5 bg-transparent border border-[var(--border-line)] focus:outline-none focus:border-[#ff7b00] transition-colors"></textarea>
+      </div>
+      <button type="submit" class="w-full py-3 bg-[#ff7b00] text-white font-semibold text-xs uppercase tracking-widest hover:opacity-90 transition-opacity cursor-pointer">
+        Send Inquiry →
+      </button>
+    </form>
+  </dialog>
+
+  <!-- Toast Notification (Top Layer Popover with accessible status role) -->
+  <div id="toastBanner" popover="manual" role="status" aria-live="polite" class="fixed bottom-5 right-5 z-[1200] hidden px-4 py-3 bg-black text-white font-montserrat text-xs font-semibold shadow-xl border border-white/10">
+    Copied to clipboard!
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
